@@ -12,9 +12,13 @@
   {% for product in products %}
   <div class="product-list">
     {% if product.good|divisibleby:3 and product.good > 0 %}
-      <img class="product-list_image product-spin" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
+      <a href="../../media/{{ product.image }}" class="zoomple">
+        <img class="product-list_image product-spin" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
+      </a>
     {% else %}
-      <img class="product-list_image" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
+      <a href="../../media/{{ product.image }}" class="zoomple">
+        <img class="product-list_image" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
+      </a>
     {% endif %}
     <div class="product-list_information">
       {% if product.category %}
@@ -37,3 +41,4 @@
   {% endfor %}
 </div>
 {% endblock content %}
+
