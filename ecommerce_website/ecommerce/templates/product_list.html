@@ -8,7 +8,8 @@
     </li>
     <li class="head-menu-item"> <a href="../order/">注文する</a></li>
   </ul>
-  <div class="content"> {% for product in products %}
+  <div class="content">
+    {% for product in products %}
     <div class="product-list">
       <img class="product-list_image" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
       <div class="product-list_information">
