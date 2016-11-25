@@ -15,6 +15,7 @@ class Order_Product(models.Model):
 class Product(models.Model):
     name = models.CharField("商品名", max_length=30)
     description = models.CharField("商品説明", max_length=30, blank=True)
+    category = models.CharField("カテゴリー", max_length=30, blank=True, null=True)
     price = models.IntegerField("価格")
     image = models.FileField("商品画像", upload_to="", blank=True)
     stock = models.IntegerField("在庫数")
