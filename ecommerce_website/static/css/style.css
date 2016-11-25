@@ -1,0 +1,174 @@
+/* common */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-width: 850px;
+}
+
+.header {
+  background-color: orange;
+}
+
+a {
+  color: #0D6295;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.header_team-name {
+  margin: 0;
+  padding: 20px 10px;
+}
+
+.header_team-name a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.head-menu {
+  background-color: #eeeeee;
+  margin: 0;
+  padding: 5px 10px;
+  list-style: none;
+}
+
+.head-menu-item {
+  display: inline-block;
+  border-right: 1px solid #333333;
+  padding: 0 10px;
+}
+
+.head-menu-item:last-child {
+  border-right: none;
+}
+
+.content {
+  padding: 0 20px;
+}
+
+.content_head01 {
+  border-left: 5px solid orange;
+  margin: 50px 0 20px;
+  padding: 5px 0 5px 10px;
+  font-size: 24px
+}
+
+/* product-list */
+
+.product-list {
+  overflow: hidden;
+  border-bottom: 1px solid #cccccc;
+  padding: 50px 30px;
+}
+
+.product-list_image {
+  float: left;
+  width: 200px;
+}
+
+.product-list_information {
+  float: right;
+  width: 680px;
+}
+
+.product-list_name {
+  font-size: 24px;
+}
+
+.product-list_cart-button {
+  color: #000000;
+  text-decoration: none;
+  background: #cccccc;
+  display: inline-block;
+  text-align: center;
+  width: 150px;
+  padding: 5px 10px;
+}
+
+.product-list_cart-button:hover {
+  background-color: #bbbbbb;
+}
+
+/* cart-list */
+
+.cart-list_goods_table {
+  border-collapse: collapse;
+  margin-left: 15px;
+}
+
+.cart-list_goods_table th {
+  border: 1px solid #ddd;
+  padding: 2px 10px;
+  background-color: #eeeeee;
+}
+
+.cart-list_goods_table td {
+  border: 1px solid #ddd;
+  padding: 2px 10px;
+}
+
+.cart-list_goods_table td:first-child {
+  text-align: center;
+}
+
+.cart-list_goods_list-price {
+  text-align: right;
+}
+
+/* order */
+
+.order_cart-goods_table {
+  border-collapse: collapse;
+  margin-left: 15px;
+}
+
+.order_cart-goods_table th {
+  border: 1px solid #ddd;
+  padding: 2px 10px;
+}
+
+.order_cart-goods_head th{
+  background-color: #eeeeee;
+}
+
+.order_cart-goods_table td {
+  border: 1px solid #ddd;
+  padding: 2px 10px;
+}
+
+.order_cart-goods_table td:first-child {
+  text-align: center;
+}
+
+.order_cart-goods_list-price {
+  text-align: right;
+}
+
+.order_customer th {
+  vertical-align: top;
+}
+
+.order_customer_input {
+  padding: 5px 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.order_cart-goods_submit {
+  border: none;
+  color: #000000;
+  text-decoration: none;
+  background: #dddddd;
+  text-align: center;
+  width: 150px;
+  margin: 30px 200px 50px;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.order_cart-goods_submit:hover {
+  background-color: #bbbbbb;
+}
