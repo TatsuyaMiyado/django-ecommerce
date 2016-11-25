@@ -29,5 +29,6 @@ urlpatterns = [
     url(r'^ec/order/', views.order),
     url(r'^ec/order_execute/', views.order_execute),
     url(r'^ec/order_complete/', views.order_complete),
-    url(r'^ec/good_add/(?P<product_id>[0-9]+)/', views.good_add)
+    url(r'^ec/good_add/(?P<product_id>[0-9]+)/', views.good_add),
+    url(r'^ec/cat_filter/$', views.cat_filter)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

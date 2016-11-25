@@ -210,3 +210,19 @@ def good_add(request, product_id):
     response = redirect('/ec/list/', {'products': products})
 
     return response
+
+def cat_filter(request):
+    """
+    商品一覧画面(/ec/list/)にてカテゴリーのリンクが押された際に呼び出されるビューです。
+    カテゴリーでフィルターした商品情報を返します。
+    """
+
+    #   カテゴリー取得
+    message = request.GET.get('cat', 1)
+
+    #   商品リストを指定されたカテゴリーでフィルタリングします
+    products = Product.objects.filter(category=message)
+
+    response = render(request, 'product_list.html', {'products': products})
+
+    return response
