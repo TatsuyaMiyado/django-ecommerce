@@ -19,6 +19,8 @@
             <span>カテゴリー：なし</span>
         {% endif %}
         <h1 class="product-list_name">{{ product.name }}</h1>
+        {{ product.description }}
+        {{ product.price }}
         <a class="product-list_cart-button" href="../cart_add/{{ product.id }}/?count=1">カートに入れる</a>
         <p><a href="../good_add/{{ product.id }}">いいね！</a>{{ product.good }}</p>
       </div>
