@@ -1,40 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <ul class="head-menu">
-    <li class="head-menu-item"> <a href="../cart_list/">カートの中身を確認する</a>
-    </li>
-    <li class="head-menu-item"> <a href="../cart_reset/">カートを空にする</a>
-    </li>
-    <li class="head-menu-item"> <a href="../order/">注文する</a></li>
-  </ul>
-  <div class="content">
-    {% for product in products %}
-    <div class="product-list">
-      {% if product.good|divisibleby:3 and product.good > 0 %}
-        <img class="product-list_image product-spin" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
+<ul class="head-menu">
+  <li class="head-menu-item"> <a href="../cart_list/">カートの中身を確認する</a>
+  </li>
+  <li class="head-menu-item"> <a href="../cart_reset/">カートを空にする</a>
+  </li>
+  <li class="head-menu-item"> <a href="../order/">注文する</a></li>
+</ul>
+<div class="content">
+  {% for product in products %}
+  <div class="product-list">
+    {% if product.good|divisibleby:3 and product.good > 0 %}
+      <img class="product-list_image product-spin" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
+    {% else %}
+      <img class="product-list_image" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
+    {% endif %}
+    <div class="product-list_information">
+      {% if product.category %}
+      <p class="product-list_category">カテゴリー：<a href="../cat_filter/?cat={{ product.category }}">{{ product.category }}</a></p>
       {% else %}
-        <img class="product-list_image" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
+      <p class="product-list_category">カテゴリー：なし</p>
       {% endif %}
-      <div class="product-list_information">
-        {% if product.category %}
-            <span>カテゴリー：<a href="../cat_filter/?cat={{ product.category }}">{{ product.category }}</a></span>
-        {% else %}
-            <span>カテゴリー：なし</span>
-        {% endif %}
-        <h1 class="product-list_name">{{ product.name }}</h1>
-        {{ product.description }}
-        {{ product.price }}
-        <form action="../cart_add/{{ product.id }}/" method="post">
-          {% csrf_token %}
-          <input type="number" name="count" value="1">個
-          <br>
-          <input type="submit" class="product-list_cart-button" value="カートに入れる">
-        </form>
-        <p><a href="../good_add/{{ product.id }}">いいね！</a>{{ product.good }}</p>
-      </div>
+      <h1 class="product-list_name">{{ product.name }}</h1>
+      <p class="product-list_description">商品説明：
+        <br>{{ product.description }}</p>
+      <p><span class="product-list_price">{{ product.price }}</span>円</p>
+      <form action="../cart_add/{{ product.id }}/" method="post">
+        {% csrf_token %}
+        <input class="product-list_count" type="number" name="count" value="1">個
+        <input type="submit" class="product-list_cart-button" value="カートに入れる">
+      </form>
+      <p><a href="../good_add/{{ product.id }}">いいね！</a>{{ product.good }}</p>
     </div>
-    {% endfor %}
   </div>
+  {% endfor %}
+</div>
 {% endblock content %}
-

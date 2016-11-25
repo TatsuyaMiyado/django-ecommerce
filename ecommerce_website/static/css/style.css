@@ -70,26 +70,54 @@ a:hover {
 }
 
 .product-list_information {
-  float: right;
-  width: 680px;
+  float: left;
+  margin-left: 45px;
+  width: 505px;
+}
+
+.product-list_category {
+  font-size: 14px;
+  margin: 0;
 }
 
 .product-list_name {
   font-size: 24px;
+  color: #EEA500;
+}
+
+.product-list_description {
+  background-color: #f6f6f6;
+  padding: 8px;
+}
+
+.product-list_price {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.product-list_count {
+  width: 40px;
+  font-size: 14px;
+  padding: 3px;
+  text-align: center;
 }
 
 .product-list_cart-button {
+  border: none;
   color: #000000;
   text-decoration: none;
-  background: #cccccc;
-  display: inline-block;
+  background: #dddddd;
   text-align: center;
   width: 150px;
+  margin-left: 20px;
   padding: 5px 10px;
+  font-size: 16px;
 }
 
 .product-list_cart-button:hover {
   background-color: #bbbbbb;
+  color: #ffffff;
 }
 
 /* cart-list */
@@ -147,6 +175,16 @@ a:hover {
   text-align: right;
 }
 
+.order_cart-goos_total {
+  margin: 10px 0px 0px 20px;
+}
+
+.order_cart-goos_total-price {
+  font-size: 24px;
+  margin: 0 5px;
+  font-weight: bold;
+}
+
 .order_customer th {
   vertical-align: top;
 }
@@ -171,6 +209,8 @@ a:hover {
 
 .order_cart-goods_submit:hover {
   background-color: #bbbbbb;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 .product-spin {
