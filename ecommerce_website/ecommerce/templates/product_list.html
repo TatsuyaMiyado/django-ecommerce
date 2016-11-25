@@ -8,14 +8,15 @@
     </li>
     <li class="head-menu-item"> <a href="../order/">注文する</a></li>
   </ul>
-  <div class="content"> {% for product in products %}
+  <div class="content">
+    {% for product in products %}
     <div class="product-list">
       <img class="product-list_image" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
       <div class="product-list_information">
         <h1 class="product-list_name">{{ product.name }}</h1>
         {{ product.description }}
         {{ product.price }}
-        <a class="product-list_cart-button" href="../cart_add/{{ product.id }}">カートに入れる</a>
+        <a class="product-list_cart-button" href="../cart_add/{{ product.id }}/?count=1">カートに入れる</a>
         <p><a href="../good_add/{{ product.id }}">いいね！</a>{{ product.good }}</p>
       </div>
     </div>
