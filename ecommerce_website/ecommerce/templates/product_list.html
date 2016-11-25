@@ -1,9 +1,23 @@
-<a href="../cart_list/">カートの中身を表示する</a>
-<a href="../cart_reset/">カートを空にする</a>
-<a href="../order/">注文する</a>
-{% for product in products %}
-    <h1>{{ product.name }}</h1>
-    <p><a href="../good_add/{{ product.id }}">いいね！</a>{{ product.good }}</p>
-    <img src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
-    <a href="../cart_add/{{ product.id }}">カートに入れる</a>
-{% endfor %}
+{% extends 'base.html' %}
+
+{% block content %}
+  <ul class="head-menu">
+    <li class="head-menu-item"> <a href="../cart_list/">カートの中身を確認する</a>
+    </li>
+    <li class="head-menu-item"> <a href="../cart_reset/">カートを空にする</a>
+    </li>
+    <li class="head-menu-item"> <a href="../order/">注文する</a></li>
+  </ul>
+  <div class="content"> {% for product in products %}
+    <div class="product-list">
+      <img class="product-list_image" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
+      <div class="product-list_information">
+        <h1 class="product-list_name">{{ product.name }}</h1>
+        <a class="product-list_cart-button" href="../cart_add/{{ product.id }}">カートに入れる</a>
+        <p><a href="../good_add/{{ product.id }}">いいね！</a>{{ product.good }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock content %}
+
