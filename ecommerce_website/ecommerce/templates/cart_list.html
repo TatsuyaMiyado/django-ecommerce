@@ -5,19 +5,21 @@
   <li class="head-menu-item"> <a class="head-menu" href="../list/">商品一覧へ</a> </li>
   <li class="head-menu-item"> <a class="head-menu" href="../order/">注文する</a> </li>
 </ul>
-
-<table>
+<div class="content">
+  <h1 class="content_head01">カート内の商品</h1>
+  <table class="cart-list_goods_table">
     <tr>
-        <th>商品番号</th>
-        <th>商品名</th>
-        <th>価格</th>
+      <th>商品番号</th>
+      <th>商品名</th>
+      <th>価格</th>
     </tr>
-{% for product in products %}
+    {% for product in products %}
     <tr>
-        <td>{{ product.id }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.price }}</td>
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td class="cart-list_goods_list-price">{{ product.price }}</td>
     </tr>
-{% endfor %}
-</table>
+    {% endfor %}
+  </table>
+</div>
 {% endblock content %}
