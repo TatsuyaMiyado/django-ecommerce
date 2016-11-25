@@ -128,7 +128,20 @@ def order(request):
     #   決済方法を取得します。
     payments = get_list_or_404(Payment)
 
-    return render(request, 'order.html', {'products': products, 'payments': payments})
+    details = []
+    total = 0
+
+    for product in products:
+        count = [item for item in cart if item['product_id'] == str(product.id)][0]['count']
+        subtotal = int(product.price) * int(count)
+        total += subtotal
+        details.append({
+            'product': product,
+            'count': count,
+            'subtotal': subtotal
+        })
+
+    return render(request, 'order.html', {'details': details, 'payments': payments, 'total': total})
 
 def order_execute(request):
     """

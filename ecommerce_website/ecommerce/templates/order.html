@@ -11,15 +11,22 @@
         <th>商品番号</th>
         <th>商品名</th>
         <th>価格</th>
+        <th>個数</th>
+        <th>小計</th>
     </tr>
-{% for product in products %}
+{% for detail in details %}
     <tr>
-        <td>{{ product.id }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.price }}</td>
+        <td>{{ detail.product.id }}</td>
+        <td>{{ detail.product.name }}</td>
+        <td>{{ detail.product.price }}</td>
+        <td>{{ detail.count }}</td>
+        <td>{{ detail.subtotal }}</td>
     </tr>
 {% endfor %}
 </table>
+<div>
+  <span>合計: </span><span>{{ total }}円</span>
+</div>
 
 <h1>お客様情報の入力</h1>
 <form action="../order_execute/" method="post">
