@@ -1,5 +1,11 @@
-<a class="head-menu" href="../list/">商品一覧へ</a>
-<a  class="head-menu" href="../order/">注文する</a>
+{% extends 'base.html' %}
+
+{% block content %}
+<ul class="head-menu">
+  <li class="head-menu-item"> <a class="head-menu" href="../list/">商品一覧へ</a> </li>
+  <li class="head-menu-item"> <a class="head-menu" href="../order/">注文する</a> </li>
+</ul>
+
 <table>
     <tr>
         <th>商品番号</th>
@@ -14,3 +20,4 @@
     </tr>
 {% endfor %}
 </table>
+{% endblock content %}
