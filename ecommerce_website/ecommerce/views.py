@@ -1,4 +1,4 @@
-import datetime
+import datetime, urllib.request
 from django.shortcuts import redirect, render, get_list_or_404, render_to_response
 from ecommerce.models import *
 
@@ -177,5 +177,38 @@ def good_add(request, product_id):
     products = get_list_or_404(Product)
 
     response = redirect('/ec/list/', {'products': products})
+
+    return response
+
+#def __unquote( message ) :
+#    """
+#    入力 message を unquote して返します。
+#    @param  message : 入力メッセージ。unicode 文字列。
+#    @return         : unquote したメッセージ。unicode 文字列。
+#    """
+#    _message = message.encode('utf-8', 'ignore')  # unicode => utf-8
+#    _message = urllib.parse.unquote(_message)   # decode
+#    _message = _message.decode('utf-8')           # utf-8 => unicode
+#
+#    return _message
+
+def cat_filter(request):
+    """
+    商品一覧画面(/ec/list/)にてカテゴリーのリンクが押された際に呼び出されるビューです。
+    カテゴリーでフィルターした商品情報を返します。
+    """
+
+    #   カテゴリー取得
+    message = request.GET.get('cat', 1)
+
+    #   変換
+    #message = __unquote(message)
+
+    #   商品リストを指定されたカテゴリーでフィルタリングします
+    products = Product.objects.filter(category=message)
+
+    #products = get_list_or_404(Product)
+
+    response = render(request, 'product_list.html', {'products': products})
 
     return response
