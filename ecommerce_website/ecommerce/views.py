@@ -31,10 +31,16 @@ def cart_add(request, product_id):
         request.session['cart'] = list()
 
     cart = request.session['cart']
-    cart.append({
-        'product_id': product_id,
-        'count': request.GET.get('count'),
-    })
+
+    if any([item['product_id'] == product_id for item in cart]):
+        item = [item for item in cart if item['product_id'] == product_id][0]
+        item['count'] = str(int(item['count']) + 1)
+    else:
+        cart.append({
+            'product_id': product_id,
+            'count': request.GET.get('count'),
+        })
+
     request.session['cart'] = cart
 
     products = get_list_or_404(Product)
@@ -95,7 +101,15 @@ def cart_list(request):
     #   カートに入っている商品の情報を取得します
     products = Product.objects.filter(id__in=[item['product_id'] for item in cart])
 
-    return render(request, 'cart_list.html', {'products': products})
+    details = []
+
+    for product in products:
+        details.append({
+            'product': product,
+            'count': [item for item in cart if item['product_id'] == str(product.id)][0]['count']
+        })
+
+    return render(request, 'cart_list.html', {'details': details})
 
 def order(request):
     """
