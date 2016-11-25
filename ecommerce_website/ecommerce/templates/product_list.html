@@ -21,7 +21,12 @@
         <h1 class="product-list_name">{{ product.name }}</h1>
         {{ product.description }}
         {{ product.price }}
-        <a class="product-list_cart-button" href="../cart_add/{{ product.id }}/?count=1">カートに入れる</a>
+        <form action="../cart_add/{{ product.id }}/" method="post">
+          {% csrf_token %}
+          <input type="number" name="count">個
+          <br>
+          <input type="submit" class="product-list_cart-button" value="カートに入れる">
+        </form>
         <p><a href="../good_add/{{ product.id }}">いいね！</a>{{ product.good }}</p>
       </div>
     </div>
