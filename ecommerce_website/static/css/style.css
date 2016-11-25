@@ -147,6 +147,16 @@ a:hover {
   text-align: right;
 }
 
+.order_cart-goos_total {
+  margin: 10px 0px 0px 20px;
+}
+
+.order_cart-goos_total-price {
+  font-size: 24px;
+  margin: 0 5px;
+  font-weight: bold;
+}
+
 .order_customer th {
   vertical-align: top;
 }
