@@ -12,12 +12,14 @@
       <th>商品番号</th>
       <th>商品名</th>
       <th>価格</th>
+      <th>個数</th>
     </tr>
-    {% for product in products %}
+    {% for detail in details %}
     <tr>
-      <td>{{ product.id }}</td>
-      <td>{{ product.name }}</td>
-      <td class="cart-list_goods_list-price">{{ product.price }}</td>
+      <td>{{ detail.product.id }}</td>
+      <td>{{ detail.product.name }}</td>
+      <td class="cart-list_goods_list-price">{{ detail.product.price }}</td>
+      <td>{{ detail.count }}</td>
     </tr>
     {% endfor %}
   </table>

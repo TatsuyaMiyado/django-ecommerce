@@ -29,8 +29,18 @@ def cart_add(request, product_id):
     #   カート(セッション)に商品を追加します。
     if not request.session.has_key('cart'):
         request.session['cart'] = list()
+
     cart = request.session['cart']
-    cart.append(product_id)
+
+    if any([item['product_id'] == product_id for item in cart]):
+        item = [item for item in cart if item['product_id'] == product_id][0]
+        item['count'] = str(int(item['count']) + 1)
+    else:
+        cart.append({
+            'product_id': product_id,
+            'count': request.GET.get('count'),
+        })
+
     request.session['cart'] = cart
 
     products = get_list_or_404(Product)
@@ -50,7 +60,7 @@ def cart_delete(request, product_id):
         request.session['cart'] = list()
     cart = request.session['cart']
     #   同じ商品が複数listに入っていた場合に、指定されてIDのオブジェクトをすべて削除する
-    cart = [item for item in cart if item is not str(product_id)]
+    cart = [item for item in cart if item['product_id'] is not str(product_id)]
     request.session['cart'] = cart
 
     products = get_list_or_404(Product)
@@ -89,9 +99,17 @@ def cart_list(request):
     cart = request.session['cart']
 
     #   カートに入っている商品の情報を取得します
-    products = Product.objects.filter(id__in=cart)
+    products = Product.objects.filter(id__in=[item['product_id'] for item in cart])
 
-    return render(request, 'cart_list.html', {'products': products})
+    details = []
+
+    for product in products:
+        details.append({
+            'product': product,
+            'count': [item for item in cart if item['product_id'] == str(product.id)][0]['count']
+        })
+
+    return render(request, 'cart_list.html', {'details': details})
 
 def order(request):
     """
@@ -105,12 +123,25 @@ def order(request):
     cart = request.session['cart']
 
     #   カートに入っている商品の情報を取得します
-    products = Product.objects.filter(id__in=cart)
+    products = Product.objects.filter(id__in=[item['product_id'] for item in cart])
 
     #   決済方法を取得します。
     payments = get_list_or_404(Payment)
 
-    return render(request, 'order.html', {'products': products, 'payments': payments})
+    details = []
+    total = 0
+
+    for product in products:
+        count = [item for item in cart if item['product_id'] == str(product.id)][0]['count']
+        subtotal = int(product.price) * int(count)
+        total += subtotal
+        details.append({
+            'product': product,
+            'count': count,
+            'subtotal': subtotal
+        })
+
+    return render(request, 'order.html', {'details': details, 'payments': payments, 'total': total})
 
 def order_execute(request):
     """
@@ -143,7 +174,7 @@ def order_execute(request):
     cart = request.session['cart']
 
     #   カートに入っている商品の情報を取得します
-    products = Product.objects.filter(id__in=cart)
+    products = Product.objects.filter(id__in=[item['product_id'] for item in cart])
 
     for product in products:
         order_product = Order_Product(order=order, product=product, count=1, price=product.price)
