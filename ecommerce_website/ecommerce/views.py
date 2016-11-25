@@ -34,11 +34,11 @@ def cart_add(request, product_id):
 
     if any([item['product_id'] == product_id for item in cart]):
         item = [item for item in cart if item['product_id'] == product_id][0]
-        item['count'] = str(int(item['count']) + 1)
+        item['count'] = str(int(item['count']) + int(request.POST['count']))
     else:
         cart.append({
             'product_id': product_id,
-            'count': request.GET.get('count'),
+            'count': request.POST['count'],
         })
 
     request.session['cart'] = cart
