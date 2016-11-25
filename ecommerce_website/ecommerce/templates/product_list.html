@@ -11,7 +11,11 @@
   <div class="content">
     {% for product in products %}
     <div class="product-list">
-      <img class="product-list_image" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
+      {% if product.good|divisibleby:3 and product.good > 0 %}
+        <img class="product-list_image product-spin" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
+      {% else %}
+        <img class="product-list_image" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
+      {% endif %}
       <div class="product-list_information">
         {% if product.category %}
             <span>カテゴリー：<a href="../cat_filter/?cat={{ product.category }}">{{ product.category }}</a></span>
