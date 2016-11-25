@@ -96,18 +96,28 @@ a:hover {
   margin-right: 5px;
 }
 
+.product-list_count {
+  width: 40px;
+  font-size: 14px;
+  padding: 3px;
+  text-align: center;
+}
+
 .product-list_cart-button {
+  border: none;
   color: #000000;
   text-decoration: none;
-  background: #cccccc;
-  display: inline-block;
+  background: #dddddd;
   text-align: center;
   width: 150px;
+  margin-left: 20px;
   padding: 5px 10px;
+  font-size: 16px;
 }
 
 .product-list_cart-button:hover {
   background-color: #bbbbbb;
+  color: #ffffff;
 }
 
 /* cart-list */
@@ -189,4 +199,6 @@ a:hover {
 
 .order_cart-goods_submit:hover {
   background-color: #bbbbbb;
+  color: #ffffff;
+  font-weight: bold;
 }

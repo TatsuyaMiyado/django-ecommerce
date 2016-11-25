@@ -14,7 +14,7 @@
     <img class="product-list_image" src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
     <div class="product-list_information">
       {% if product.category %}
-      <p class="product-list_category">カテゴリー：{{ product.category }}</p>
+      <p class="product-list_category">カテゴリー：<a href="../cat_filter/?cat={{ product.category }}">{{ product.category }}</a></p>
       {% else %}
       <p class="product-list_category">カテゴリー：なし</p>
       {% endif %}
@@ -24,8 +24,7 @@
       <p><span class="product-list_price">{{ product.price }}</span>円</p>
       <form action="../cart_add/{{ product.id }}/" method="post">
         {% csrf_token %}
-        <input type="number" name="count" value="1">個
-        <br>
+        <input class="product-list_count" type="number" name="count" value="1">個
         <input type="submit" class="product-list_cart-button" value="カートに入れる">
       </form>
       <p><a href="../good_add/{{ product.id }}">いいね！</a>{{ product.good }}</p>
