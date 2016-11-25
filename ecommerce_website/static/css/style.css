@@ -70,12 +70,30 @@ a:hover {
 }
 
 .product-list_information {
-  float: right;
-  width: 680px;
+  float: left;
+  margin-left: 45px;
+  width: 505px;
+}
+
+.product-list_category {
+  font-size: 14px;
+  margin: 0;
 }
 
 .product-list_name {
   font-size: 24px;
+  color: #EEA500;
+}
+
+.product-list_description {
+  background-color: #f6f6f6;
+  padding: 8px;
+}
+
+.product-list_price {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 5px;
 }
 
 .product-list_cart-button {
